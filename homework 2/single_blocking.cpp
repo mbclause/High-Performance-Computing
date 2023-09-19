@@ -6,7 +6,7 @@ Also, complete the table below as well and submit it:*/
 
 // single transmission, blocking
 
-#include <mpi.h>
+/*#include <mpi.h>
 #include <iostream>
 #include <cstring>
 
@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
 
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
-    //MPI_Barrier(MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
 
     start = MPI_Wtime();
 
@@ -62,12 +62,12 @@ int main(int argc, char* argv[])
         free(nameRecvd); 
     }
 
-    //MPI_Barrier(MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
 
     end = MPI_Wtime();
 
     MPI_Finalize();
 
-    if (rank == 1)
-        cout << "Execution time = " << end - start << endl;
-}
+    if (rank == 0)
+        cout << "Execution time for 1 communication using blocking = " << end - start << endl;
+}*/
