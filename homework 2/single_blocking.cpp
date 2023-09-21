@@ -1,12 +1,7 @@
-/*Write either a single program or separate C/C++/Python programs that use(s) MPI blocking and 
-non-blocking commands MPI_Send, MPI_Rcvd, MPI_Isend and MPI_Ircvd to exchange one string value 
-between process with rank 0 and process with rank 1. The string value should be either your name or your group name. 
-The program(s) needs to calculate and display the communication time (using MPI_Wtime) for each of the four communications below. 
-Also, complete the table below as well and submit it:*/
+// File: single_blocking.cpp
+// Description: This program sends a single communication using blocking.
 
-// single transmission, blocking
-
-/*#include <mpi.h>
+#include <mpi.h>
 #include <iostream>
 #include <cstring>
 
@@ -30,12 +25,12 @@ int main(int argc, char* argv[])
 
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
-    MPI_Barrier(MPI_COMM_WORLD);
-
+    // get the start time for the program
     start = MPI_Wtime();
 
     if (rank == 0)
     {
+        // pass the string as a char pointer of size .size()
         string name = "Michael Clausen";
 
         MPI_Send(name.c_str(), name.size(), MPI_CHAR, 1, 0, MPI_COMM_WORLD);
@@ -47,27 +42,30 @@ int main(int argc, char* argv[])
     {
         MPI_Status status;
 
+        // get the size of the communication buffer
         MPI_Probe(0, 0, MPI_COMM_WORLD, &status);
 
         MPI_Get_count(&status, MPI_CHAR, &count);
 
+        // use count to allocate the receiving char buffer
         char* nameRecvd = (char*)malloc(sizeof(char) * count); 
 
         MPI_Recv(nameRecvd, count, MPI_CHAR, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
+        // construct the string of length count using the buffer
         string newName(nameRecvd, count);
 
         cout << "Process 1 received string " << newName << " from process 0.\n";
 
         free(nameRecvd); 
+
+        // since this is the final process, get the stop time of the program
+        end = MPI_Wtime();
     }
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    end = MPI_Wtime();
 
     MPI_Finalize();
 
-    if (rank == 0)
+    // only display the time for the last process
+    if (rank == 1)
         cout << "Execution time for 1 communication using blocking = " << end - start << endl;
-}*/
+}
