@@ -1,8 +1,10 @@
-/*In addition to what Exercise 1 asks, create another parallel construct that
+/*
+File: exercise_2.cpp
+Description: In addition to what Exercise 1 asks, create another parallel construct that
 adds 2*i to array[i].
 */
 
-/*#include <iostream>
+#include <iostream>
 #include <omp.h>
 #include <fstream>
 
@@ -54,4 +56,4 @@ int main(int argc, char** argv)
     out.close();
 
     return 0;
-}*/
+}

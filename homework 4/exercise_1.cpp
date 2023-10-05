@@ -1,8 +1,10 @@
-/*Write an openMP program to initialize an array array[] of size 64 to all
+/*
+File: exercise_1.cpp
+Description: Write an openMP program to initialize an array array[] of size 64 to all
 1s in parallel using 16 threads, using one parallel construct and/or parallel for.
 */
 
-/*#include <iostream>
+#include <iostream>
 #include <omp.h>
 #include <fstream>
 
@@ -37,4 +39,4 @@ int main(int argc, char** argv)
     out.close();
 
     return 0;
-}*/
+}

@@ -1,4 +1,6 @@
-/*In addition to what Exercise 1 and Exercise 2 ask, create another
+/*
+File: exercise_3.cpp
+Description: In addition to what Exercise 1 and Exercise 2 ask, create another
 parallel construct that calculates the number of values divisible by 3 in array[] as follows: it
 distributes the iterations to each thread using cyclic distribution, each thread computes the
 number of even values from its iterations and master thread collects and adds the number of
