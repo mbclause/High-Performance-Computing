@@ -1,3 +1,6 @@
+Programmer: Michael Clausen
+Project: Homework 5
+
 exercise_1.cu - Usage: ./a.out
 A CUDA program which initializes an array array[] of size 64 to all 2s in parallel.
 

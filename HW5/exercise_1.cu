@@ -13,35 +13,48 @@ using namespace std;
 
 
 
-__global__ void Init_Array()
+// Function to initialize the array using the GPU
+__global__ void Init_Array(int *array, const int size)
 {
+        int i = threadIdx.x;
 
-        const int size = 64;
-
-        int  array[size];
-
-        for(int i = 0; i < size; i++)
-        {
+        if(i < size)
                 array[i] = 2;
-        }
-
-        for(int i = 0; i < size; i++)
-        {
-                printf("%d ", array[i]);
-        }
-
-        printf("\n");
 }
+
+
+
 
 
 
 
 int main()
 {
+	// the size of the array, and thus the number of GPU threads
+        const int size = 64;
 
-        Init_Array<<<1, 5>>>();
+        int  *deviceArray;
 
-        cudaDeviceSynchronize();
+        int  cpuArray[size];
+
+	// allocate memory for the device array
+        cudaMalloc((void **)&deviceArray, size * sizeof(int));
+
+	// set the number of threads
+        dim3   blockSize(size);
+
+        Init_Array<<<1, blockSize>>>(deviceArray, size);
+	
+	// copy the array initialized on the GPU to the cpu array
+        cudaMemcpy(cpuArray, deviceArray, size * sizeof(int), cudaMemcpyDeviceToHost);
+
+	// display the array contents
+        for(int i = 0; i < size; i++)
+                cout << cpuArray[i] << " ";
+
+        cout << endl;
+
+        cudaFree(deviceArray);
 
         return 0;
 
