@@ -1,4 +1,4 @@
-# ⚙️ High Performance Computing Projects – CPSC XXX
+# ⚙️ High Performance Computing Projects – CPSC 479
 
 This repository contains assignments and projects developed for the High Performance Computing course at California State University, Fullerton. The work demonstrates practical applications of distributed and parallel programming using **MPI**, **CUDA**, and **OpenMP**, alongside algorithmic strategies for parallel computation and inter-process communication.
 
