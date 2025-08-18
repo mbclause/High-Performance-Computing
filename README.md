@@ -18,12 +18,16 @@ This repository contains assignments and projects developed for the High Perform
 ### 🔁 Project 1 – MPI Ring-Based Leader Election  
 *Folder: `project-1-leader-election-yes-team-main`*
 
+Collaborators: Melissa Huynh, Anthony Tran
+
 Implements a **ring-based leader election algorithm** using MPI. Each process in the ring network passes messages to determine the highest-ranked node. Demonstrates concepts of distributed consensus, unidirectional communication, and synchronization in MPI.
 
 ---
 
 ### 🧮 Project 2 – Shear Sort on GPU using CUDA  
 *Folder: `project-2-team_jayson-main`*
+
+Collaborators: Jayson Doty, Youssef Hegazy
 
 Implements **Shear Sort**—a parallel sorting algorithm designed for 2D mesh topologies—using **CUDA** for massively parallel execution on an NVIDIA GPU. Focuses on coalesced memory access, synchronization between CUDA threads, and correctness across multiple phases of row/column sorting.
 
